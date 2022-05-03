@@ -11,7 +11,9 @@ export const ReviewsPage = () => {
     useEffect(() => {
         fetchReviews(movieId).then(setReviews);
     }, [movieId]);
-    
+  
+  console.log(reviews)
+  
     return (
         <>
             
