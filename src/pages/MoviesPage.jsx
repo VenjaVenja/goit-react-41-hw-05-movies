@@ -9,27 +9,27 @@ export const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const location = useLocation();
-  console.log(location);
-
   const searchQuery = searchParams.get('query');
-  console.log(searchQuery)
- 
+
+  console.log(searchQuery);
+
+  
   useEffect(() => {
     if (searchFilm === '') {
       return;
     }
-
     fetchSearchedMovie(searchFilm).then(setFilms);
     // .catch(error => { setError(error) })
     // .finally()
   }, [searchFilm]);
 
+
   useEffect(() => {
-    if (searchQuery === '') {
+    if (searchQuery === '' || searchQuery === null) {
       return;
     }
-     fetchSearchedMovie(searchQuery).then(setFilms);
-  }, [searchQuery])
+    fetchSearchedMovie(searchQuery).then(setFilms);
+  }, [searchQuery]);
   
 
 
@@ -41,20 +41,18 @@ export const MoviesPage = () => {
   return (
     <div>
       {<SearchBar onSubmit={onSearchFilm} />}
-      {films &&
-        films.map(({ id, title, original_name }) => (
-          <ul key={id}>
-            <li>
+      {films && searchQuery &&
+       <ul>
+          {films.map(({ id, title, original_name }) => (
+            <li key={id}>
               <Link
                 to={`/movies/${id}`}
-                // state={{ from: location }}
-                state={{ from: location.pathname + location.search }}
-              >
+                state={{ from: location.pathname + location.search }}>
                 {title || original_name}
               </Link>
             </li>
-          </ul>
-        ))}
+          ))}
+        </ul>}
     </div>
   );
 };

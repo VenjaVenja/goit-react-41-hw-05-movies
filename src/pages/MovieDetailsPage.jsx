@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Outlet, useLocation, Link } from 'react-router-dom';
+import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { MovieInfo } from 'components/MovieInfo/MovieInfo';
 import { fetchMovieById } from 'services/api';
 
@@ -12,10 +12,10 @@ export const MovieDetailsPage = () => {
   const location = useLocation();
   console.log('MovieDetailsPage ', location);
 
-  // console.log(location.state.from.pathname)
-  // console.log(location.state.from.search)
-  // console.log(location.state.from.pathname + location.state.from.search)
+  const currentLocation = location;
+  console.log(currentLocation);
 
+  
   useEffect(() => {
     fetchMovieById(movieId)
       .then(setMovie)
@@ -31,12 +31,12 @@ export const MovieDetailsPage = () => {
   // }, [])
   
   // console.log(path);
-  
+
   return (
     <>
-      <Link to={location?.state?.from ?? '/'}>Go back</Link>
+      {/* <Link to={location?.state?.from ?? '/'}>Go back</Link> */}
       {/* <button type="button" onClick={goBack}>Go Back</button> */}
-      {movie && <MovieInfo movie={movie} movieId={movieId} />}
+      {movie && <MovieInfo movie={movie} movieId={movieId} currentLocation={currentLocation} />}
       <Outlet />
     </>
   );
