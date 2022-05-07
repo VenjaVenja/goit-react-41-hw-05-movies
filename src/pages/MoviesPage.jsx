@@ -6,10 +6,13 @@ import { fetchSearchedMovie } from 'services/api';
 export const MoviesPage = () => {
   const [films, setFilms] = useState([]);
   const [searchFilm, setSearchFilm] = useState('');
-  const [, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const location = useLocation();
   console.log(location);
+
+  const searchQuery = searchParams.get('query');
+  console.log(searchQuery)
  
   useEffect(() => {
     if (searchFilm === '') {
@@ -21,8 +24,13 @@ export const MoviesPage = () => {
     // .finally()
   }, [searchFilm]);
 
-  const { search } = location;
-  console.log(search)
+  useEffect(() => {
+    if (searchQuery === '') {
+      return;
+    }
+     fetchSearchedMovie(searchQuery).then(setFilms);
+  }, [searchQuery])
+  
 
 
   const onSearchFilm = searchFilm => {
