@@ -1,7 +1,10 @@
 import { useState } from "react";
+// import { useSearchParams } from "react-router-dom";
 
 export const SearchBar = ({onSubmit}) => {
     const [searchFilm, setSearchFilm] = useState('');
+
+    
 
     const onFilmSearch = event => {
         const { value } = event.currentTarget;

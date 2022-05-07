@@ -1,3 +1,4 @@
+import { Loader } from "components/Loader/Loader";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchReviews } from "services/api";
@@ -16,7 +17,7 @@ export const ReviewsPage = () => {
   
     return (
         <>
-            
+        <Loader/>
         <h2>DEEEEEEE</h2>
       {/* <ul className="cast">
         {cast.map(({ id, original_name, character, profile_path }) => {
