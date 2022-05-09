@@ -1,10 +1,8 @@
 import { useState } from "react";
-// import { useSearchParams } from "react-router-dom";
+import { Wrapper, Form, FindBtn, FindInput } from "./SearchBar.stuled";
 
 export const SearchBar = ({onSubmit}) => {
     const [searchFilm, setSearchFilm] = useState('');
-
-    
 
     const onFilmSearch = event => {
         const { value } = event.currentTarget;
@@ -22,11 +20,11 @@ export const SearchBar = ({onSubmit}) => {
     };
 
     return (
-        <header>
-            <form onSubmit={heandleSubmit}>
-                <button type="submit">Let`s find movie</button>
+        <Wrapper>
+            <Form onSubmit={heandleSubmit}>
+                <FindBtn type="submit">Let`s find movie</FindBtn>
 
-                <input
+                <FindInput
                     type="text"
                     name="searchImg"
                     value={searchFilm}
@@ -35,7 +33,7 @@ export const SearchBar = ({onSubmit}) => {
                     autoFocus
                     placeholder="Search film"
                 />
-            </form>
-        </header>
+            </Form>
+        </Wrapper>
     )
 };

@@ -4,8 +4,10 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = 'aadcea8a3c7e0e5566343c1859f18989';
 
 export const fetchTrendMovies = async () => {
-  const trendUrl = 'trending/all/day?';
-  const response = await axios.get(`${BASE_URL}${trendUrl}api_key=${API_KEY}`);
+  const trendUrl = 'trending/movie/day?';
+  const response = await axios.get(
+    `${BASE_URL}${trendUrl}api_key=${API_KEY}&page=1`
+  );
   const results = response.data.results;
   return results;
 };
@@ -35,7 +37,7 @@ export const fetchCredits = async movieId => {
     `${BASE_URL}${creditsUrl}${movieId}/credits?api_key=${API_KEY}&language=en-US`
   );
   const results = response.data.cast;
-  console.log(results);
+  // console.log(results);
   return results;
 };
 
@@ -45,6 +47,6 @@ export const fetchReviews = async movieId => {
     `${BASE_URL}${reviewsUrl}${movieId}/reviews?api_key=${API_KEY}&language=en-US&page=1`
   );
   const results = response.data.results;
-  console.log(results);
+  // console.log(results);
   return results;
 };

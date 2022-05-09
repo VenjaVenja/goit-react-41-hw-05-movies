@@ -1,11 +1,10 @@
-// import { NavLink } from 'react-router-dom';
-import { Link } from './Navigation.styled';
+import { Link, NaviWrapper } from './Navigation.styled';
 
 export const Navigation = () => {
   return (
-    <nav>
+    <NaviWrapper>
       <Link to='/'>Home</Link>
-      <Link to='/movies'>Movie</Link>
-    </nav>
+      <Link to='/movies'>Movies</Link>
+    </NaviWrapper>
   );
 };

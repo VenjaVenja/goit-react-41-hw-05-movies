@@ -1,37 +1,41 @@
+import propTypes from "prop-types";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { fetchTrendMovies } from "services/api";
+import { Wrapper, HeadingText, FilsList, FilmsListItem } from "./MovieList.styled";
 
 
 export const MovieList = () => {
   const [films, setFilms] = useState([]);
-
   const location = useLocation();
-  console.log('MovieList ', location);
  
   useEffect(() => {
-    fetchTrendMovies().then(setFilms)
-      // .catch(error => {
-      //   setError(error);
-      // })
-      // .finally();
-  }, []);
+    fetchTrendMovies().then(setFilms)}, []);
 
   return (
-    <>
-      <h2>Trending films</h2>
+    <Wrapper>
+      <HeadingText>Trending films</HeadingText>
       {films &&
-        films.map(({id, title, original_name}) => (
-          <ul key={id}>
-            <li>
+        <FilsList>
+          {films.map(({ id, title, original_name }) => (
+            <FilmsListItem key={id}>
               <Link
                 to={`/movies/${id}`}
                 state={{ from: location }}>
                 {title || original_name}
               </Link>
-            </li>
-          </ul>
-        ))}
-    </>
+            </FilmsListItem>
+          ))}
+        </FilsList>}
+    </Wrapper>
   );
+};
+
+MovieList.propTypes = {
+  films: propTypes.shape({
+    id: propTypes.string.isRequired,
+    title: propTypes.string.isRequired,
+    original_name: propTypes.string.isRequired,
+  }),
+  location: propTypes.object,
 };

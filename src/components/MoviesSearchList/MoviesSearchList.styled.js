@@ -1,16 +1,8 @@
 import styled from '@emotion/styled';
 
-export const HeadingText = styled.h1`
-  display: flex;
-  justify-content: center;
-  text-transform: uppercase;
-  color: #77376a;
-  font-weight: bold;
-`;
-
 export const Wrapper = styled.div`
   padding: 20px 15px;
-  background-color: c;
+  background-color: #e6f0f0;
 `;
 
 export const FilsList = styled.ul`
@@ -21,4 +13,9 @@ export const FilsList = styled.ul`
 
 export const FilmsListItem = styled.li`
   margin-top: 5px;
+`;
+
+export const NotificationText = styled.p`
+  display: flex;
+  justify-content: center;
 `;
