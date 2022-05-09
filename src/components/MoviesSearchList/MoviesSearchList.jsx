@@ -6,7 +6,7 @@ import {
   Wrapper,
   FilsList,
   FilmsListItem,
-  // NotificationText
+  NotificationText
 } from './MoviesSearchList.styled';
 import propTypes from 'prop-types';
 
@@ -39,6 +39,7 @@ export const MoviesSearchList = () => {
   return (
     <Wrapper> 
       {<SearchBar onSubmit={onSearchFilm} />}
+      {films.length ===0 && <NotificationText>Please enter search movie text </NotificationText>}
       {films && searchQuery &&
        <FilsList>
           {films.map(({ id, title, original_name }) => (
@@ -51,7 +52,7 @@ export const MoviesSearchList = () => {
             </FilmsListItem>
           ))}
         </FilsList>}
-      {/* {films.length === 0 && <NotificationText>Sorry we coud`n find movies ( </NotificationText>} */}
+
     </Wrapper>
   );
 };

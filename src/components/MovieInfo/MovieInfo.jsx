@@ -61,7 +61,7 @@ MovieInfo.propTypes = {
     release_date: propTypes.string.isRequired,
     vote_average: propTypes.number.isRequired,
     overview: propTypes.string.isRequired,
-    genres: propTypes.shape({
+    genres: propTypes.arrayOf({
       name: propTypes.string.isRequired,
     }).isRequired
   }),
